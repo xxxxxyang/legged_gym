@@ -42,7 +42,11 @@ def train(args):
     # 默认无头服务器
 
     if args.wandb:
-        wandb.init(project=args.proj_name, name=args.id, config=args)
+        config= {
+            "args": args,
+            "env_cfgs": task_registry.env_cfgs
+        }
+        wandb.init(project=args.proj_name, name=args.id, config=config)
         # wandb.save("/base/legged_robot_config.py", policy="now")
 
 
